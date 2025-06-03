@@ -1,8 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+import Header from "../components/Header";
 export default function Home() {
   return (
-  <div>My Notes</div>
+    <div>
+      <Header />
+      <h1>My Notes</h1>
+    </div>
+    
   );
 }
