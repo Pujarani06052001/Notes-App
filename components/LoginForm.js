@@ -1,4 +1,6 @@
-import { useState } from 'react'
+'use client'
+
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import useStore from '../store/useStore'
@@ -7,16 +9,35 @@ import styles from '../styles/Login.module.css'
 export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login } = useStore()
+  const { isLoggedIn, login } = useStore()
   const router = useRouter()
+
+  // Prevent hydration mismatch
+  const [hasHydrated, setHasHydrated] = useState(false)
+  useEffect(() => {
+    setHasHydrated(true)
+  }, [])
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.replace('/notes') // replaces URL to prevent going "back" to login
+    }
+  }, [isLoggedIn, router])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (email && password) {
       login({ email, name: email.split('@')[0] })
-      router.push('/notes')
+      // router.replace('/notes') will happen automatically in useEffect
     }
   }
+
+  // Wait for hydration before rendering to avoid flicker
+  if (!hasHydrated) return null
+
+  // Don't show form if already logged in (for safety)
+  if (isLoggedIn) return null
 
   return (
     <div className={styles.container}>
