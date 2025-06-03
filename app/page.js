@@ -1,14 +1,19 @@
-import Header from "../components/Header";
-import LoginForm from "@/components/LoginForm";
-import SignupForm from "@/components/SignupForm";
+// app/page.js
+'use client'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import useStore from '../store/useStore'
+import LoginForm from '../components/LoginForm'
+
 export default function Home() {
-  return (
-    <div>
-      <Header />
-      <h1>My Notes</h1>
-      <LoginForm />
-      <SignupForm />
-    </div>
-    
-  );
+  const { isLoggedIn } = useStore()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/notes')
+    }
+  }, [isLoggedIn, router])
+
+  return <LoginForm />
 }
