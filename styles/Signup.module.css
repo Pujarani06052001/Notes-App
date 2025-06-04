@@ -123,18 +123,77 @@
 .link a:hover {
   text-decoration: underline;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
   .wrapper {
     flex-direction: column;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
   }
 
   .imageSide {
     height: 200px;
+    min-height: unset;
   }
 
-  .imageText {
-    font-size: 1.6rem;
+  .loginBox {
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .input {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .imageSide h2 {
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+  }
+
+  .loginBox {
+    padding: 1.5rem 1rem;
+  }
+
+  .input, .button {
+    font-size: 0.9rem;
+  }
+
+  .form {
+    gap: 0.9rem;
+  }
+
+  .link {
+    font-size: 0.85rem;
   }
 }

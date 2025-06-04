@@ -38,9 +38,9 @@ export default function Header() {
         </div>
 
         <ul className={`${styles.navLinks} ${isOpen ? styles.showMenu : ''}`}>
-          <li><Link href="/notes" className={styles.navLink}>Notes</Link></li>
-          <li><Link href="/about" className={styles.navLink}>About</Link></li>
-          <li><Link href="/account" className={styles.navLink}>Account</Link></li>
+          <li onClick={toggleMenu}><Link href="/notes" className={styles.navLink}>Notes</Link></li>
+          <li onClick={toggleMenu}><Link href="/about" className={styles.navLink}>About</Link></li>
+          <li onClick={toggleMenu}><Link href="/account" className={styles.navLink}>Account</Link></li>
           <li>
             <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
           </li>
